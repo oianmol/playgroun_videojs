@@ -5,8 +5,24 @@ import './App.css'
 import '@theonlyducks/videojs-zoom/styles';
 import '@theonlyducks/videojs-zoom';
 
+import {
+  BrowserRouter as Router,
+  Link,
+  useLocation
+} from "react-router-dom";
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
+
 const App = () => {
-  const videoUrl = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  let query = useQuery();
+  let queryVideoUrl =   query.get('videoUrl') 
+  const videoUrl = queryVideoUrl? 
+  (queryVideoUrl) : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
   const playerRef = React.useRef(null);
 
