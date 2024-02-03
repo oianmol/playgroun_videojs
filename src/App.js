@@ -37,7 +37,6 @@ const App = () => {
     fluid: true,
     sources: [{
       src:  videoUrl,
-      type: 'video/mp4'
     }]
   };
 
@@ -59,6 +58,7 @@ const App = () => {
   return (
     <>
       <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+    
     </>
   );
 };
